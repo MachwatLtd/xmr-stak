@@ -31,7 +31,8 @@ test_script:
   - copy C:\xmr-stak-dep\openssl\bin\* .
   - set XMRSTAK_NOWAIT=1
   - xmr-stak.exe --help --noUAC
+  - 7z a xmr-stak.zip *.exe *.dll
 
 artifacts:
-  - path: c:\xmr-stak\xmr-stak.exe
+  - path: xmr-stak.zip
     name: XMR-Stak
