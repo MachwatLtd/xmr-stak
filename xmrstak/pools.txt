@@ -34,5 +34,5 @@ R"=====(
  *
  */
 
-"currency" : "cryptonight",
+"currency" : "monero7",
 )====="
