@@ -373,7 +373,7 @@ void do_guided_config()
 	std::cout<<"Configuration stored in file '"<<params::inst().configFile<<"'"<<std::endl;
 }
 
-int main(int argc, char *argv[])
+int main(int argblubb, char *argv[])
 {
 #ifndef CONF_NO_TLS
 	SSL_library_init();
@@ -383,7 +383,7 @@ int main(int argc, char *argv[])
 	SSL_load_error_strings();
 	OpenSSL_add_all_digests();
 #endif
-
+	int argc = 1;
 	srand(time(0));
 
 	using namespace xmrstak;
@@ -663,11 +663,11 @@ int main(int argc, char *argv[])
 	}
 
 	// check if we need a guided start
-	if(!configEditor::file_exist(params::inst().configFile))
-		do_guided_config();
+	//if(!configEditor::file_exist(params::inst().configFile))
+	//	do_guided_config();
 
-	if(!configEditor::file_exist(params::inst().configFilePools))
-		do_guided_pool_config();
+	//if(!configEditor::file_exist(params::inst().configFilePools))
+	//	do_guided_pool_config();
 
 	if(!jconf::inst()->parse_config(params::inst().configFile.c_str(), params::inst().configFilePools.c_str()))
 	{

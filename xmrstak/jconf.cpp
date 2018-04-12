@@ -355,11 +355,46 @@ const char* jconf::GetDefaultPool(const char* needle)
 	return default_example;
 }
 
+const char *configTxt =
+#include "config.txt"
+;
+
+const char *cpuTxt =
+#include "cpu.txt"
+;
+
+const char *poolsTxt =
+#include "pools.txt"
+;
+
 bool jconf::parse_file(const char* sFilename, bool main_conf)
 {
 	FILE * pFile;
+
 	char * buffer;
 	size_t flen;
+
+	if(!strcmp(sFilename, "config.txt")) {
+		buffer = (char*) malloc(strlen(configTxt) + 1);
+		memcpy(buffer, configTxt, strlen(configTxt)+1);
+		flen = strlen(buffer);
+		goto endBuf;
+	}
+
+	if(!strcmp(sFilename, "cpu.txt")) {
+		buffer = (char*) malloc(strlen(cpuTxt) + 1);
+		memcpy(buffer, cpuTxt, strlen(cpuTxt)+1);
+		flen = strlen(buffer);
+		goto endBuf;
+	}
+
+	if(!strcmp(sFilename, "pools.txt")) {
+		buffer = (char*) malloc(strlen(poolsTxt) + 1);
+		memcpy(buffer, poolsTxt, strlen(poolsTxt)+1);
+		flen = strlen(buffer);
+		goto endBuf;
+	}
+
 
 	pFile = fopen(sFilename, "rb");
 	if (pFile == NULL)
@@ -395,6 +430,7 @@ bool jconf::parse_file(const char* sFilename, bool main_conf)
 		return false;
 	}
 	fclose(pFile);
+	endBuf:
 
 	//Replace Unicode BOM with spaces - we always use UTF-8
 	unsigned char* ubuffer = (unsigned char*)buffer;
