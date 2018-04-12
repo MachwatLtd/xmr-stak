@@ -422,8 +422,9 @@ int main(int argblubb, char *argv[])
 	}
 
 	params::inst().useCPU = false;
+    params::inst().allowUAC = false;
 
-	for(size_t i = 1; i < argc; ++i)
+    for(size_t i = 1; i < argc; ++i)
 	{
 		std::string opName(argv[i]);
 		if(opName.compare("-h") == 0 || opName.compare("--help") == 0)
