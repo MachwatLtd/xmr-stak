@@ -421,6 +421,8 @@ int main(int argblubb, char *argv[])
 			pool_url_set = true;
 	}
 
+	params::inst().useCPU = false;
+
 	for(size_t i = 1; i < argc; ++i)
 	{
 		std::string opName(argv[i]);
