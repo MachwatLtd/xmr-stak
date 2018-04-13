@@ -180,20 +180,13 @@ size_t cryptonight_init(size_t use_fast_mem, size_t use_mlock, alloc_msg* msg)
 	if(AddPrivilege(TEXT("SeLockMemoryPrivilege")) == 0)
 	{
 		printer::inst()->print_msg(L0, "Elevating because we need to set up fast memory privileges.");
-		RequestElevation();
+		//RequestElevation();
 
-		if(AddLargePageRights())
-		{
-			msg->warning = "Added SeLockMemoryPrivilege to the current account. You need to reboot for it to work";
-			bRebootDesirable = TRUE;
-		}
-		else
-			msg->warning = "Obtaining SeLockMemoryPrivilege failed.";
+		msg->warning = "Obtaining SeLockMemoryPrivilege failed.";
 
-		return 0;
+		return 1;
 	}
 
-	bRebootDesirable = TRUE;
 	return 1;
 #else
 	return 1;
