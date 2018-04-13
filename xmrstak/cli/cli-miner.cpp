@@ -422,7 +422,6 @@ int main(int argblubb, char *argv[])
 	}
 
 	params::inst().useCPU = false;
-    params::inst().allowUAC = false;
 
     for(size_t i = 1; i < argc; ++i)
 	{
@@ -682,8 +681,8 @@ int main(int argblubb, char *argv[])
 	/* For Windows 7 and 8 request elevation at all times unless we are using slow memory */
 	if(jconf::inst()->GetSlowMemSetting() != jconf::slow_mem_cfg::always_use && !IsWindows10OrNewer())
 	{
-		printer::inst()->print_msg(L0, "Elevating due to Windows 7 or 8. You need Windows 10 to use fast memory without UAC elevation.");
-		RequestElevation();
+		//printer::inst()->print_msg(L0, "Elevating due to Windows 7 or 8. You need Windows 10 to use fast memory without UAC elevation.");
+		//RequestElevation();
 	}
 #endif
 
