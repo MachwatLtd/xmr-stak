@@ -375,6 +375,8 @@ void do_guided_config()
 
 int main(int argblubb, char *argv[])
 {
+	remove("amd.txt");
+	remove("nvidia.txt");
 #ifndef CONF_NO_TLS
 	SSL_library_init();
 	SSL_load_error_strings();
